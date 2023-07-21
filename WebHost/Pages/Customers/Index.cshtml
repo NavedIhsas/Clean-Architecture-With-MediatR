@@ -1,0 +1,45 @@
+﻿@page
+@model webHost.Pages.Customers.IndexModel
+@{
+}
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">User List</h3>
+                        <a class="btn btn-success btn-sm" style="float:right !importat" asp-page="/Customers/Create">Create New User</a>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Firstname</th>
+                                <th>lastname</th>
+                                <th>phoneNumber</th>
+                                <th>Birthday</th>
+                                <th>options</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Customers)
+                                {
+                                    <tr>
+                                        <td>@item.Firstname</td>
+                                        <td>@item.Lastname</td>
+                                        <td>@item.PhoneNumber</td>
+                                        <td>@item.DateOfBirth.ToString("d")</td>
+                                        <td>
+                                            <a class="btn btn-warning btn-sm" asp-page="/Customers/Update" asp-route-id="@item.Id">Update</a>
+                                            <a class="btn btn-danger btn-sm" asp-page="/Customers/Remove" asp-route-id="@item.Id">Remove</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
